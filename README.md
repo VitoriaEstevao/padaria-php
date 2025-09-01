@@ -46,18 +46,18 @@ sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
 Ajustar permissões garante que o Apache e o usuário ubuntu possam acessar, ler e escrever arquivos corretamente, evitando erros de permissão.
-
+---
 ###  5. Preparar a pasta web
 ```bash
 cd /var/www/html
 sudo rm -f index.html
 ```
-
+---
 ###  6. Clonar projeto do GitHub
 ```bash
 sudo -u ubuntu git clone https://github.com/VitoriaEstevao/padaria-php.git
 ```
-
+---
 ###  7. Configurar MariaDB
 1. Execute o script de segurança:
 ```bash
@@ -83,7 +83,7 @@ CREATE TABLE pedidos (
 ```bash
 show processlist;
 ```
-
+---
 ###  8. Atualizar projeto existente
 ```bash
 cd /var/www/html/padaria-php
