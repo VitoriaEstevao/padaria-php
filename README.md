@@ -12,32 +12,30 @@
 
 ---
 
-### 🖥️ 1. Vá até o serviço **EC2**
-
-1. No topo, use a barra de busca e digite **EC2**
-2. Clique no serviço **EC2** (Instâncias virtuais na nuvem)
+### 🖥️ 1. Atualizar o Ubuntu
+sudo apt update && sudo apt -y
 
 ---
 
-### 🆕 3. Crie uma Nova Instância
+### 🆕 2. Instalar pacotes essenciais
+sudo apt install -y git apache2 php php-mysql php-mbstring php-xml mariadb-server
 
-1. Clique em **"Launch Instance"**
-2. Preencha os campos da seguinte forma:
-
-| Campo                        | Valor Sugerido                                  |
-|-----------------------------|--------------------------------------------------|
-| **Name**                    | `MeuServidorUbuntu`                              |
-| **AMI**                     | `Ubuntu Server 22.04 LTS (x86)`                 |
-| **Instance type**           | `t2.micro` (elegível no Free Tier)               |
-| **Key pair (login)**        | Criar nova chave (baixe e guarde o `.pem`)       |
-| **Firewall (Security Group)** | Abrir portas 22 (SSH), 80 (HTTP), 443 (HTTPS)     |
-| **Storage**                 | Padrão 8GB ou mais conforme necessidade          |
-
-3. Clique em **"Launch Instance"**
+git → para clonar projetos do GitHub
+apache2 → servidor web
+php → interpretador PHP
+php-mysql → extensão para conexão com MySQL/MariaDB
+php-mbstring e php-xml → extensões PHP adicionais
+mariadb-server → servidor de banco de dados
 
 ---
 
-### 🔗 4. Conecte via SSH
+### 🆕 3. Habilitar serviços automaticamente
+sudo systemctl enable --now apache2
+sudo systemctl enable --now mariadb
+
+---
+
+### 🆕 3. Habilitar serviços automaticamente
 
 #### Para Linux/macOS:
 
