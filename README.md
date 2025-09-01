@@ -1,10 +1,10 @@
 # ☁️ Criando um Servidor Ubuntu na AWS (EC2)
 
-> Guia para subir um servidor **Ubuntu Linux** na nuvem da **AWS**, usando o serviço EC2.
+> Este repositório mostra como configurar um *servidor Ubuntu na AWS EC2* para rodar projetos PHP conectados a *MariaDB/MySQL, usando **Apache2*, PHP e Git.
 
 ---
 
-## 🚀 Preparando o ambiente
+## 📌 Preparando o ambiente
 
 1. Conecte-se com o Sandbox no ambiente da AWS
 2. Criar uma instância EC2 com Ubuntu Server
@@ -12,13 +12,13 @@
 
 ---
 
-### 🖥️ 1. Atualizar o Ubuntu
+### 🖥 1. Atualizar o Ubuntu
 ```bash
 sudo apt update && sudo apt -y
 ```
 ---
 
-### 🆕 2. Instalar pacotes essenciais
+###  2. Instalar pacotes essenciais
 ```bash
 sudo apt install -y git apache2 php php-mysql php-mbstring php-xml mariadb-server
 ```
@@ -31,32 +31,32 @@ mariadb-server → servidor de banco de dados
 
 ---
 
-### 🆕 3. Habilitar serviços automaticamente
+###  3. Habilitar serviços automaticamente
 ```bash
 sudo systemctl enable --now apache2
 sudo systemctl enable --now mariadb
 ```
 ---
 
-### 🆕 4. Ajustar permissões da pasta web
+###  4. Ajustar permissões da pasta web
 ```bash
 sudo chown -R ubuntu:www-data /var/www
 sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
 
-### 🆕 5. Preparar a pasta web
+###  5. Preparar a pasta web
 ```bash
 cd /var/www/html
 sudo rm -f index.html
 ```
 
-### 🆕 6. Clonar projeto do GitHub
+###  6. Clonar projeto do GitHub
 ```bash
 sudo -u ubuntu git clone https://github.com/VitoriaEstevao/padaria-php.git
 ```
 
-### 🆕 7. Configurar MariaDB
+###  7. Configurar MariaDB
 1. Execute o script de segurança:
 ```bash
 sudo mysql_secure_installation
@@ -82,7 +82,7 @@ CREATE TABLE pedidos (
 show processlist;
 ```
 
-### 🆕 8. Atualizar projeto existente
+###  8. Atualizar projeto existente
 ```bash
 cd /var/www/html/padaria-php
 git pull origin main
