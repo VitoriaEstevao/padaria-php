@@ -11,8 +11,8 @@
 3. Acessar via SSH a instância no prompt do Windows
 
 ---
-
-### 🖥 1. Atualizar o Ubuntu
+## 📌 Configurando o Servidor Ubuntu
+###  1. Atualizar o Ubuntu
 ```bash
 sudo apt update && sudo apt -y
 ```
@@ -22,12 +22,12 @@ sudo apt update && sudo apt -y
 ```bash
 sudo apt install -y git apache2 php php-mysql php-mbstring php-xml mariadb-server
 ```
-git → para clonar projetos do GitHub
-apache2 → servidor web
-php → interpretador PHP
-php-mysql → extensão para conexão com MySQL/MariaDB
-php-mbstring e php-xml → extensões PHP adicionais
-mariadb-server → servidor de banco de dados
+- git → para clonar projetos do GitHub
+- apache2 → servidor web
+- php → interpretador PHP
+- php-mysql → extensão para conexão com MySQL/MariaDB
+- php-mbstring e php-xml → extensões PHP adicionais
+- mariadb-server → servidor de banco de dados
 
 ---
 
@@ -36,7 +36,7 @@ mariadb-server → servidor de banco de dados
 sudo systemctl enable --now apache2
 sudo systemctl enable --now mariadb
 ```
-Isso garante que Apache2 e MariaDB iniciem automaticamente toda vez que a instância for ligada, evitando ter que iniciar manualmente.
+- Isso garante que Apache2 e MariaDB iniciem automaticamente toda vez que a instância for ligada, evitando ter que iniciar manualmente.
 ---
 
 ###  4. Ajustar permissões da pasta web
@@ -45,7 +45,7 @@ sudo chown -R ubuntu:www-data /var/www
 sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
-Ajustar permissões garante que o Apache e o usuário ubuntu possam acessar, ler e escrever arquivos corretamente, evitando erros de permissão.
+- Ajustar permissões garante que o Apache e o usuário ubuntu possam acessar, ler e escrever arquivos corretamente, evitando erros de permissão.
 ---
 ###  5. Preparar a pasta web
 ```bash
@@ -89,4 +89,4 @@ show processlist;
 cd /var/www/html/padaria-php
 git pull origin main
 ```
-
+- Sempre que alterar alguma configuração no projeto do git, precisa atualizar na nuvem!
