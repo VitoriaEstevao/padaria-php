@@ -12,10 +12,12 @@
 
 ---
 ## 📌 Configurando o Servidor Ubuntu
+
 ###  1. Atualizar o Ubuntu
 ```bash
 sudo apt update && sudo apt -y
 ```
+
 ---
 
 ###  2. Instalar pacotes essenciais
@@ -46,18 +48,24 @@ sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
 - Ajustar permissões garante que o Apache e o usuário ubuntu possam acessar, ler e escrever arquivos corretamente, evitando erros de permissão.
+  
 ---
+
 ###  5. Preparar a pasta web
 ```bash
 cd /var/www/html
 sudo rm -f index.html
 ```
+
 ---
+
 ###  6. Clonar projeto do GitHub
 ```bash
 sudo -u ubuntu git clone https://github.com/VitoriaEstevao/padaria-php.git
 ```
+
 ---
+
 ###  7. Configurar MariaDB
 1. Execute o script de segurança:
 ```bash
@@ -83,10 +91,44 @@ CREATE TABLE pedidos (
 ```bash
 show processlist;
 ```
+
 ---
+
 ###  8. Atualizar projeto existente
 ```bash
 cd /var/www/html/padaria-php
 git pull origin main
 ```
 - Sempre que alterar alguma configuração no projeto do git, precisa atualizar na nuvem!
+
+---
+## 📌 Configurando HTTPS
+
+###  1. Criar uma nova configuração https para o Apache
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+-keyout /etc/ssl/private/apache-selfsigned.key \
+-out /etc/ssl/certs/apache-selfsigned.crt
+
+sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/padaria-php-ssl.conf
+```
+
+---
+
+###  2. Verifique as configurações
+```bash
+sudo nano /etc/apache2/sites-available/padaria-php-ssl.conf
+```
+
+---
+
+###  3. Reiniciar o Apache
+```bash
+sudo a2enmod ssl
+sudo systemctl restart apache2
+sudo systemctl reload apache2
+```
+
+- a2enmod ssl ativou o módulo necessário para o Apache lidar com HTTPS.
+- systemctl restart apache2 reiniciou o Apache para aplicar a mudança.
+- systemctl reload apache2 recarregou as configurações do Apache para garantir que o servidor
