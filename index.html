@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Padaria Delícia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Padaria Delícia</h1>
+        <p>O sabor que conquista!</p>
+    </header>
+
+    <main>
+        <section class="produtos">
+            <h2>Nossos Produtos</h2>
+            <ul>
+                <li>Pão Francês</li>
+                <li>Bolo de Cenoura</li>
+                <li>Croissant</li>
+                <li>Sonho</li>
+            </ul>
+        </section>
+
+        <section class="formulario">
+            <h2>Deixe seu Pedido</h2>
+            <form id="pedidoForm" action="salvar.php" method="POST">
+                <input type="text" name="nome" placeholder="Seu nome" required>
+                <input type="text" name="produto" placeholder="Produto desejado" required>
+                <button type="submit">Enviar Pedido</button>
+            </form>
+            <p id="mensagem"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Padaria Delícia</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
