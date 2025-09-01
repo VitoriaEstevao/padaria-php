@@ -36,6 +36,7 @@ mariadb-server → servidor de banco de dados
 sudo systemctl enable --now apache2
 sudo systemctl enable --now mariadb
 ```
+Isso garante que Apache2 e MariaDB iniciem automaticamente toda vez que a instância for ligada, evitando ter que iniciar manualmente.
 ---
 
 ###  4. Ajustar permissões da pasta web
@@ -44,6 +45,7 @@ sudo chown -R ubuntu:www-data /var/www
 sudo find /var/www -type d -exec sudo chmod 2775 {} \;
 sudo find /var/www -type f -exec sudo chmod 0664 {} \;
 ```
+Ajustar permissões garante que o Apache e o usuário ubuntu possam acessar, ler e escrever arquivos corretamente, evitando erros de permissão.
 
 ###  5. Preparar a pasta web
 ```bash
