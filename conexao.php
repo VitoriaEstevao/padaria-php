@@ -1,8 +1,8 @@
 <?php
-$host = "ec2-184-72-188-139.compute-1.amazonaws.com";   // No AWS será o endpoint do RDS
-$user = "root";        // Usuário do MySQL
-$pass = "ifsp";            // Senha do MySQL
-$db   = "padaria";     // Nome do banco
+$host = "127.0.0.1"; // ou "localhost" se o PHP e o banco estão na mesma máquina
+$user = "padaria_user";
+$pass = "senha_forte";
+$db   = "padaria";
 
 $conn = new mysqli($host, $user, $pass, $db);
 
@@ -10,4 +10,6 @@ $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Falha na conexão: " . $conn->connect_error);
 }
+
+// echo "Conectado com sucesso!";
 ?>
